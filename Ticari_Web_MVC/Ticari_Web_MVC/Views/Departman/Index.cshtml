@@ -1,0 +1,54 @@
+﻿@using Entity_Layer.Concrete
+@model List<Departman>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<br />
+
+@if (User.IsInRole("A"))
+{
+<a href="/Departman/Departman_Ekle/" style="margin-left:15px" class="btn btn-info">Departman Ekle</a>
+}
+
+
+<br />
+<br />
+<br />
+<table class="table table-bordered">
+    <tr>
+
+        <th>ID</th>
+        <th>Ad</th>
+        <th>Personeller</th>
+        <th>Detaylar</th>
+
+        @if (User.IsInRole("A"))
+        {
+            <th>Güncelle</th>
+            <th>Sil</th>
+        }
+
+
+    </tr>
+    @foreach (var item in Model)
+    {
+<tr>
+
+    <td>@item.Departman_Id</td>
+    <td>@item.Departman_Ad</td>
+    <td><a href="/Departman/Departman_Personel_Listele/@item.Departman_Id" class="btn btn-outline-info">Personeller</a></td>
+    <td><a href="#" class="btn btn-outline-success">DETAYLAR</a></td>
+
+    @if (User.IsInRole("A"))
+    {
+        <td><a href="/Departman/Departman_Guncelle/@item.Departman_Id" class="btn btn-danger">Güncelle</a></td>
+        <td><a href="/Departman/Departman_Sil/@item.Departman_Id" class="btn btn-warning">Sil</a></td>
+    }
+
+</tr>
+    }
+
+
+</table>

@@ -1,0 +1,58 @@
+﻿@model Entity_Layer.Concrete.Urun
+@{
+    ViewBag.Title = "Urun_Guncelle";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<br />
+<br />
+
+@using (Html.BeginForm("Urun_Guncelle", "Urun", FormMethod.Post))
+{
+
+<form class="form-control">
+    @Html.Label("AD")
+    @Html.TextBoxFor(x => x.Urun_Ad, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Urun_Ad);
+
+    <br />
+    @Html.Label("KATEGORİ")
+    @Html.DropDownListFor(x => x.Kategori_Id, (List<SelectListItem>)ViewBag.kategoriliste, new { @class = "form-control" })
+    <br />
+    @Html.Label("MARKA")
+    @Html.DropDownListFor(x => x.Marka_Id, (List<SelectListItem>)ViewBag.markaliste, new { @class = "form-control" })
+
+    <br />
+    @Html.Label("SATIŞ FİYAT")
+    @Html.TextBoxFor(x => x.Satis_Fiyat, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Satis_Fiyat)
+    <br />
+    @Html.Label("ALIŞ FİYAT")
+    @Html.TextBoxFor(x => x.Alis_Fiyat, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Alis_Fiyat)
+    <br />
+    @Html.Label("TARİH")
+    @Html.TextBoxFor(x => x.Urun_Eklenme_Tarih, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Urun_Eklenme_Tarih)
+    <br />
+    @Html.Label("ADET")
+    @Html.TextBoxFor(x => x.Stok, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Stok)
+    <br />
+    @Html.Label("GÖRSEL")
+    @Html.TextBoxFor(x => x.Urun_Gorsel, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Urun_Gorsel)
+    <br />
+    <button type="submit" id="Btn1" class="btn btn-primary mb-2">Güncelle</button>
+
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script>
+        $('#Btn1').click(function () {
+            alert("Ürün Güncellendi")
+        });
+
+    </script>
+
+</form>
+}
+

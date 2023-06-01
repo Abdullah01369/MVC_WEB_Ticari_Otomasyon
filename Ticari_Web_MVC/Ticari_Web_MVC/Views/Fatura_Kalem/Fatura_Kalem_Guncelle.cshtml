@@ -1,0 +1,52 @@
+﻿@model Entity_Layer.Concrete.Fatura_Kalem
+@{
+    
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+
+
+@using (Html.BeginForm("Fatura_Kalem_Guncelle", "Fatura_Kalem", FormMethod.Post))
+{
+
+    <form class="form-control">
+        @Html.Label("Fatura Kalem Id")
+        <input readonly class="form-control" value="@ViewBag.id" />
+
+
+        <br />
+        @Html.Label("Açıklama")
+        @Html.TextBoxFor(x => x.Aciklama, new { @class = "form-control" })
+
+        <br />
+        @Html.Label("Adet")
+        @Html.TextBoxFor(x => x.Miktar, new { @class = "form-control" })
+
+        <br />
+        @Html.Label("Birim Fiyat")
+        @Html.TextBoxFor(x => x.Birim_Fiyat, new { @class = "form-control" })
+
+
+        <br />
+        @Html.Label("Tutar")
+        @Html.TextBoxFor(x => x.Tutar, new { @class = "form-control" })
+
+
+
+
+
+        <button type="submit" id="Btn1" class="btn btn-primary mb-2">Ekle</button>
+
+        <script src="~/Scripts/jquery-3.4.1.js"></script>
+        <script>
+            $('#Btn1').click(function () {
+                alert("Güncellendi")
+            });
+
+        </script>
+
+    </form>
+}
+
+
+

@@ -1,0 +1,43 @@
+﻿@using Entity_Layer.Concrete
+@model List<Cari>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<br />
+<a href="/Cari/Cari_Ekle/" style="margin-left:15px" class="btn btn-info">Cari Ekle</a>
+
+<br />
+<br />
+<br />
+<table class="table table-striped">
+    <tr>
+
+        <th>#</th>
+        <th>Ad</th>
+        <th>Soyad</th>
+        <th>Mail</th>
+        <th>Şehir</th>
+        <th>Güncelle</th>
+        <th>Sil</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>@item.Cari_Id</th>
+            <td>@item.Cari_Ad</td>
+            <td>@item.Cari_Soyad</td>  
+            <td>@item.Cari_Mail</td>
+            <td>@item.Sehir.Sehir_Ad</td>
+           
+            <td> <a href="/Cari/Cari_Guncelle/@item.Cari_Id" class="btn btn-danger">Güncelle</a></td>
+            <td> <a href="/Cari/Cari_Satis/@item.Cari_Id" class="btn btn-warning">Satış</a></td>
+
+        </tr>
+    }
+
+
+</table>
+

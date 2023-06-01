@@ -1,0 +1,43 @@
+﻿@model Entity_Layer.Concrete.Personel
+@{
+    ViewBag.Title = "Personel_Ekle";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+<br />
+<br />
+
+@using (Html.BeginForm("Personel_Ekle", "Personel", FormMethod.Post, new { enctype="multipart/form-data"}))
+{
+<form class="form-control">
+
+    @Html.Label("Ad")
+    @Html.TextBoxFor(x => x.Personel_Ad, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Personel_Ad)
+
+    @Html.Label("SoyAd")
+    @Html.TextBoxFor(x => x.Personel_Soyad, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Personel_Soyad)
+
+    <input type="file" name="Personel_Gorsel" class="form-control" />
+
+    @Html.Label("Tarih")
+    @Html.TextBoxFor(x => x.Personel_Kayit_Tarih, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Personel_Kayit_Tarih)
+
+    @Html.Label("Mail")
+    @Html.TextBoxFor(x => x.Personel_Mail, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Personel_Mail)
+
+    @Html.Label("Şifre")
+    @Html.TextBoxFor(x => x.Personel_Sifre, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Personel_Sifre)
+
+
+    @Html.DropDownListFor(x => x.Departman_Id, (List<SelectListItem>)ViewBag.departmanliste, new { @class = "form-control" })
+    <br />
+
+    <button type="submit" class="btn btn-primary mb-2">Kaydet</button>
+
+</form>
+}
+

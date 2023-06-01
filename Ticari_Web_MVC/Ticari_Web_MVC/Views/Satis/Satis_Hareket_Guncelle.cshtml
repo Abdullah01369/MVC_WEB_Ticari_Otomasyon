@@ -1,0 +1,72 @@
+﻿@model Entity_Layer.Concrete.Satis_Hareket
+@{
+    ViewBag.Title = "Satis_Hareket_Ekle";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<br />
+<br />
+
+@using (Html.BeginForm("Satis_Hareket_Guncelle", "Satis", FormMethod.Post))
+{
+
+    <form class="form-control">
+        @Html.Label("Ürün Ad")
+        @Html.DropDownListFor(x => x.Urun_Id, (List<SelectListItem>)ViewBag.Urunliste, new { @class = "form-control" })
+
+        <br />
+        @Html.Label("Cari")
+        @Html.DropDownListFor(x => x.Cari_Id, (List<SelectListItem>)ViewBag.Cariliste, new { @class = "form-control" })
+        <br />
+        @Html.Label("Personel")
+        <input value="@ViewBag.personel" readonly class="form-control" />
+        @*@Html.DropDownListFor(x => x.Personel_Id, (List<SelectListItem>)ViewBag.Personelliste, new { @class = "form-control" })*@
+
+        @Html.Label("Adet")
+        <input type="number" name="Adet" class="form-control" max="10" min="1" id="txt1" onchange="sum();" />
+
+        @Html.Label("Fiyat")
+        <input type="text" name="Fiyat" class="form-control" value="" id="txt2" onkeyup="sum();" />
+        @Html.Label("Toplam Fiyat")
+
+        <input type="text" name="Toplam_Tutar" class="form-control" id="txt3" readonly />
+
+        <br />
+        @Html.Label("SATIŞ TARİH :") <h3>@ViewBag.tarih</h3>
+
+
+
+
+        <br />
+        <button type="submit" id="Btn1" class="btn btn-primary mb-2">Kaydet</button>
+
+        <script src="~/Scripts/jquery-3.4.1.js"></script>
+        <script>
+        $('#Btn1').click(function () {
+            alert("Güncellendi")
+        });
+
+        </script>
+
+
+        <script>
+        function sum() {
+            var sayi1 = document.getElementById('txt1').value;
+            var sayi2 = document.getElementById('txt2').value;
+            var sonuc = parseInt(sayi1) * parseInt(sayi2);
+            if (!isNaN(sonuc)) {
+                document.getElementById('txt3').value = sonuc;
+            }
+        }
+
+        </script>
+
+
+
+
+
+
+
+    </form>
+}
+

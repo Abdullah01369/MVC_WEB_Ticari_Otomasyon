@@ -1,0 +1,44 @@
+﻿@model Entity_Layer.Concrete.Cari
+@{
+    ViewBag.Title = "Cari_Guncelle";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+<br />
+<br />
+
+@using (Html.BeginForm("Cari_Guncelle", "Cari", FormMethod.Post))
+{
+<form class="form-control">
+
+    @Html.Label("Ad")
+    @Html.TextBoxFor(x => x.Cari_Ad, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Cari_Ad)
+
+    @Html.Label("SoyAd")
+    @Html.TextBoxFor(x => x.Cari_Soyad, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Cari_Soyad)
+
+    @Html.Label("Mail")
+    @Html.TextBoxFor(x => x.Cari_Mail, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Cari_Mail)
+
+    @Html.Label("Şehir")
+    @Html.DropDownListFor(x => x.Sehir_Id, (List<SelectListItem>)ViewBag.shrliste, new { @class = "form-control" })
+    <br />
+
+    <button type="submit" id="Btn1" class="btn btn-primary mb-2">Güncelle</button>
+
+
+ 
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script>
+        $('#Btn1').click(function () {
+            alert("GÜNCELLENDİ")
+        });
+
+    </script>
+
+
+</form>
+}
+

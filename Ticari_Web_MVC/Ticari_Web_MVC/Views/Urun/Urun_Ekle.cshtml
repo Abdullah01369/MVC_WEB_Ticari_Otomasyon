@@ -1,0 +1,63 @@
+﻿@model Entity_Layer.Concrete.Urun
+@{
+    ViewBag.Title = "Urun_Ekle";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<br />
+<br />
+
+@using (Html.BeginForm("Urun_Ekle", "Urun", FormMethod.Post))
+{
+
+<form class="form-control">
+    @Html.Label("AD")
+    <input style="font-weight:bold;font-size:medium" type="text" class="form-control" name="Urun_Ad" placeholder="">
+    @Html.ValidationMessageFor(x => x.Urun_Ad, "")
+
+    <br />
+    @Html.Label("KATEGORİ")
+    @Html.DropDownListFor(x => x.Kategori_Id, (List<SelectListItem>)ViewBag.kategoriliste, new { @class = "form-control" })
+    <br />
+    @Html.Label("MARKA")
+    @Html.DropDownListFor(x => x.Marka_Id, (List<SelectListItem>)ViewBag.markaliste, new { @class = "form-control" })
+
+    <br />
+    @Html.Label("SATIŞ FİYAT")
+    <input style="font-weight:bold;font-size:medium" type="text" class="form-control" name="Satis_Fiyat" placeholder=" ">
+    @Html.ValidationMessageFor(x => x.Satis_Fiyat, "")
+
+    <br />
+    @Html.Label("ALIŞ FİYAT")
+    <input style="font-weight:bold;font-size:medium" type="text" class="form-control" name="Alis_Fiyat" placeholder=" ">
+    @Html.ValidationMessageFor(x => x.Alis_Fiyat, "")
+
+    <br />
+    @Html.Label("TARİH")
+    <input style="font-weight:bold;font-size:medium" type="text" class="form-control" name="Urun_Eklenme_Tarih" placeholder=" ">
+    @Html.ValidationMessageFor(x => x.Urun_Eklenme_Tarih, "")
+
+    <br />
+    @Html.Label("ADET")
+    <input style="font-weight:bold;font-size:medium" type="text" class="form-control" name="Stok" placeholder=" ">
+    @Html.ValidationMessageFor(x => x.Stok, "")
+
+    <br />
+    @Html.Label("GÖRSEL")
+    <input style="font-weight:bold;font-size:medium" type="text" class="form-control" name="Urun_Gorsel" placeholder=" ">
+    @Html.ValidationMessageFor(x => x.Urun_Gorsel, "")
+
+    <br />
+    <button type="submit" id="Btn1" class="btn btn-primary mb-2">Kaydet</button>
+
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script>
+        $('#Btn1').click(function () {
+            alert("Ürün Eklendi")
+        });
+
+    </script>
+
+</form>
+}
+

@@ -1,0 +1,60 @@
+﻿@model Entity_Layer.Concrete.Fatura
+@{
+    ViewBag.Title = "Fatura_Guncelle";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<h2>Fatura_Guncelle</h2>
+
+@using (Html.BeginForm("Fatura_Ekle", "Fatura", FormMethod.Post))
+{
+
+    <form class="form-control">
+        @Html.Label("SERİ NO")
+        @Html.TextBoxFor(x => x.Fatura_Seri_No, new { @class = "form-control" })
+
+
+        <br />
+        @Html.Label("SIRA NO")
+        @Html.TextBoxFor(x => x.Fatura_Sira_No, new { @class = "form-control" })
+
+        <br />
+        @Html.Label("VERGİ DAİRESİ")
+        @Html.TextBoxFor(x => x.Vergi_Dairesi, new { @class = "form-control" })
+
+
+
+        <br />
+        @Html.Label("SAAT")
+        @Html.TextBoxFor(x => x.Saat, new { @class = "form-control" })
+
+
+
+        <br />
+        @Html.Label("TARİH")
+        <input type="date" name="Tarih" class="form-control" />
+
+        <br />
+        @Html.Label("MÜŞTERİ")
+        @Html.DropDownListFor(x => x.Cari_Id, (List<SelectListItem>)ViewBag.Cariliste, new { @class = "form-control" })
+
+        <br />
+        @Html.Label("TOPLAM")
+        @Html.TextBoxFor(x => x.Toplam, new { @class = "form-control" })
+        <br />
+
+        <button type="submit" id="Btn1" class="btn btn-primary mb-2">Ekle</button>
+
+        <script src="~/Scripts/jquery-3.4.1.js"></script>
+        <script>
+            $('#Btn1').click(function () {
+                alert("Güncellendi")
+            });
+
+        </script>
+
+    </form>
+}
+
+
+

@@ -1,0 +1,58 @@
+﻿@using Entity_Layer.Concrete
+@using PagedList;
+@using PagedList.Mvc;
+
+@model PagedList.IPagedList<Kategori>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+@*listelemek için grekliymıs*@
+<br />
+
+@if (User.IsInRole("A"))
+{
+<a href="/Kategori/Kategori_Ekle/" style="margin-left:15px" class="btn btn-info">Kategori Ekle</a>
+}
+
+
+<br />
+<br />
+<br />
+<table class="table table-bordered">
+    <tr>
+
+        <th>#</th>
+        <th>Kategori Ad</th>
+        @if (User.IsInRole("A"))
+        {
+            <th>Güncelle</th>
+            <th>Sil</th>
+        }
+
+
+    </tr>
+    @foreach (var item in Model)
+    {
+<tr>
+    <th>@item.Kategori_Id</th>
+    <td>@item.Kategori_Ad</td>
+
+    @if (User.IsInRole("A"))
+    {
+        <td> <a href="/Kategori/Kategori_Guncelle/@item.Kategori_Id" class="btn btn-danger">Güncelle</a></td>
+        <td> <a href="/Kategori/Kategori_Sil/@item.Kategori_Id" class="btn btn-warning">Sil</a></td>
+    }
+
+
+</tr>
+    }
+
+
+</table>
+
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }), new PagedListRenderOptions { 
+    LiElementClasses=new List<string> { "page-link"}
+}) 
+
+@*alttaki numararlara sayfa degısımı ıcın*@

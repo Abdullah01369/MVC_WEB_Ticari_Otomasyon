@@ -1,0 +1,44 @@
+﻿@using Entity_Layer.Concrete
+@model List<Satis_Hareket>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<br />
+
+<h2>@ViewBag.isim</h2>
+
+
+<br />
+<br />
+<table class="table table-bordered">
+    <tr>
+
+        <th>#</th>
+        <th>Adet</th>
+        <th>Fiyat</th>
+        <th>Toplam</th>
+        <th>Personel ID</th>
+        <th>Tarih</th>
+     
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>@item.Satis_Id</th>
+            <td>@item.Adet</td>
+            <td>@item.Fiyat</td>
+            <td>@item.Toplam_Tutar</td>
+            <td>@item.Personel_Id</td>
+            <td>@item.Tarih</td>
+
+         
+
+        </tr>
+    }
+
+
+</table>
+

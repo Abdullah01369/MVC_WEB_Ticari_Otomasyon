@@ -1,0 +1,28 @@
+﻿@model Entity_Layer.Concrete.Kategori
+@{
+    ViewBag.Title = "Kategori_Guncelle";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<h2>GÜNCELLE</h2>
+
+
+@using (Html.BeginForm("Kategori_Guncelle", "Kategori", FormMethod.Post))
+{
+<form class="form-control">
+    @Html.Label("Kategori Adı")
+    <br />
+    @Html.TextBoxFor(x => x.Kategori_Ad, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Kategori_Ad);
+
+    <br />
+    <button type="submit" id="Btn1" class="btn btn-primary mb-2">Güncelle</button>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script>
+        $('#Btn1').click(function () {
+            alert("Güncellendi")
+        });
+
+    </script>
+</form>
+}
